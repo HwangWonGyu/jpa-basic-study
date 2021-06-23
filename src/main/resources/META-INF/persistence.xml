@@ -10,16 +10,35 @@
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /> <!-- 데이터베이스 방언 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /> <!-- 데이터베이스 방언 : -->
 
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />
             <property name="hibernate.jdbc.batch_size" value="10"/> <!-- 사이즈만큼 쿼리를 모아서 데이터베이스에 한방에 커밋 : 버퍼 같은 기능 -->
-<!--            <property name="hibernate.id.new_generator_mappings" value="true" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- DDL 자동 생성. 단, 개발 환경에서만 사용하는 방향으로 가자. 운영 환경에 사용하려면 다듬고 사용하자. -->
+            <!--create-->
+            <!--기존테이블 삭제 후 다시 생성 (DROP + CREATE)-->
+            <!--create-drop-->
+            <!--create와 같으나 종료시점에 테이블 DROP-->
+            <!--update-->
+            <!--변경분만 반영-->
+            <!--validate-->
+            <!--엔티티와 테이블이 정상 매핑되었는지만 확인-->
+            <!--none-->
+            <!--사용하지 않음-->
 
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <!--
+            데이터베이스 스키마 자동 생성시 주의 사항
+            운영 장비에는 절대 create, create-drop, update 사용하면 안된다.
+            왜? 시스템이 중단 상태가 될 수 있기 때문이다.
+            개발 초기 단계는 create 또는 update
+            테스트 서버는 update 또는 validate
+            스테이징과 운영 서버는 validate 또는 none
+            -->
+
+            <!--<property name="hibernate.id.new_generator_mappings" value="true" />-->
         </properties>
     </persistence-unit>
 
