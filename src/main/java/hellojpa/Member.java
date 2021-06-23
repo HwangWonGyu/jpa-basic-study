@@ -17,6 +17,15 @@ public class Member {
     // USER 테이블의 username 컬럼과 맵핑
     private String name;
 
+    // JPA 내부적으로 리플렉션을 사용하기 때문에 기본 생성자 추가
+    public Member() {
+    }
+
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

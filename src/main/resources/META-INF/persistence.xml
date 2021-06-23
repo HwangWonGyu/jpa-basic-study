@@ -16,6 +16,7 @@
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.use_sql_comments" value="true" />
+            <property name="hibernate.jdbc.batch_size" value="10"/> <!-- 사이즈만큼 쿼리를 모아서 데이터베이스에 한방에 커밋 : 버퍼 같은 기능 -->
 <!--            <property name="hibernate.id.new_generator_mappings" value="true" />-->
 
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
