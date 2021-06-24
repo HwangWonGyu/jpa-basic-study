@@ -21,17 +21,17 @@ public class JpaOneWayRelationMain {
             team.setName("TeamA");
             em.persist(team);
 
-            MemberRelation memberRelation = new MemberRelation();
-            memberRelation.setUsername("member1");
-            memberRelation.setTeam(team); // Team 객체를 MemberRelation 객체가 참조
-            em.persist(memberRelation);
+            MemberRelationOneWay memberRelationOneWay = new MemberRelationOneWay();
+            memberRelationOneWay.setUsername("member1");
+            memberRelationOneWay.setTeam(team); // Team 객체를 MemberRelation 객체가 참조
+            em.persist(memberRelationOneWay);
 
-            MemberRelation findMemberRelation = em.find(MemberRelation.class, memberRelation.getId());
-            Team findTeam = findMemberRelation.getTeam(); // teamId 없이도 곧바로 Team 객체 획득 가능
+            MemberRelationOneWay findMemberRelationOneWay = em.find(MemberRelationOneWay.class, memberRelationOneWay.getId());
+            Team findTeam = findMemberRelationOneWay.getTeam(); // teamId 없이도 곧바로 Team 객체 획득 가능
             System.out.println("findTeam = " + findTeam.getName());
 
             Team newTeam = em.find(Team.class, 100L); // 100번 키가 DB에 있다고 가정을 하고 Team을 가져와보자.
-            findMemberRelation.setTeam(newTeam); // 그리고나서 찾아둔 MemberRelation의 Team을 변경하면 foreign key가 변경이 된다.
+            findMemberRelationOneWay.setTeam(newTeam); // 그리고나서 찾아둔 MemberRelation의 Team을 변경하면 foreign key가 변경이 된다.
 
             tx.commit();
         } catch (Exception e) {

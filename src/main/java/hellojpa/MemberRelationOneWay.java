@@ -3,7 +3,7 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
-public class MemberRelation {
+public class MemberRelationOneWay {
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
