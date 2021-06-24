@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class JpaOneWayRelationMain {
+public class JpaTwoWayRelationMain {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -39,58 +39,6 @@ public class JpaOneWayRelationMain {
         } finally {
             em.close();
         }
-
-        /*
-        --출력 결과--
-        Hibernate:
-
-            drop table if exists Member CASCADE
-        Hibernate:
-
-            drop table if exists MemberRelation CASCADE
-        Hibernate:
-
-            drop table if exists Team CASCADE
-        Hibernate:
-
-            drop sequence if exists hibernate_sequence
-        Hibernate: create sequence hibernate_sequence start with 1 increment by 1
-        Hibernate:
-
-            create table Member (
-                id bigint not null,
-                age integer,
-                createdDate timestamp,
-                description clob,
-                lastModifiedDate timestamp,
-                roleType varchar(255),
-                name varchar(255),
-                primary key (id)
-            )
-        Hibernate:
-
-            create table MemberRelation (
-                MEMBER_ID bigint not null,
-                USERNAME varchar(255),
-                TEAM_ID bigint,
-                primary key (MEMBER_ID)
-            )
-        Hibernate:
-
-            create table Team (
-                TEAM_ID bigint not null,
-                name varchar(255),
-                primary key (TEAM_ID)
-            )
-
-        Hibernate:
-
-            alter table MemberRelation
-                add constraint FK574sx72orjbgr84uavmsbtmgp
-                foreign key (TEAM_ID)
-                references Team
-        ===================
-        */
 
         emf.close();
     }

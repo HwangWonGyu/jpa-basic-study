@@ -14,7 +14,7 @@ public class MemberRelationOneWay {
 
     @ManyToOne // MemberRelation 입장에서는 Many, Team 입장에서는 One. [N:1]
     @JoinColumn(name = "TEAM_ID") // foreign key랑 매핑해야해서 JoinColumn 사용
-    private Team team;
+    private TeamOneWay teamOneWay;
 
     public Long getId() {
         return id;
@@ -32,11 +32,11 @@ public class MemberRelationOneWay {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
+    public TeamOneWay getTeam() {
+        return teamOneWay;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeam(TeamOneWay teamOneWay) {
+        this.teamOneWay = teamOneWay;
     }
 }

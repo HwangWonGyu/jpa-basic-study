@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Team {
+public class TeamOneWay {
 
     @Id @GeneratedValue
     @Column(name = "TEAM_ID")
